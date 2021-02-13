@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ProyectoWEB1.Models.tblArchivoProyecto>
+
+@{
+    ViewBag.Title = "Materiales";
+}
+
+<h2>Materiales</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoConstruccion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoConstruccion)
+        </td>
+    </tr>
+}
+
+</table>

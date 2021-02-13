@@ -1,0 +1,33 @@
+﻿@model ProyectoWEB1.Models.tblMateriales
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles del Material</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreMaterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreMaterial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioMaterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioMaterial)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdMaterial }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProyectoWEB1.Models.tblArchivoProyecto_Materiales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Proyectos con sus Materiales</h2>
+
+<p>
+    @Html.ActionLink("Agregar Material", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tblArchivoProyecto.NombreArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblMateriales.NombreMaterial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioParcial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblArchivoProyecto.NombreArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblMateriales.NombreMaterial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioParcial)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.IdArchivoProyecto_Materiales }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IdArchivoProyecto_Materiales }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdArchivoProyecto_Materiales })
+        </td>
+    </tr>
+}
+
+</table>

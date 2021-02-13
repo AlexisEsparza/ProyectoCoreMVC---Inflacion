@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProyectoWEB1.Models.tblArchivoProyecto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Proyectos</h2>
+
+<p>
+    @Html.ActionLink("Agregar Proyecto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoConstruccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioTotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoConstruccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioTotal)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdArchivoProyecto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.IdArchivoProyecto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdArchivoProyecto })
+        </td>
+    </tr>
+}
+
+</table>

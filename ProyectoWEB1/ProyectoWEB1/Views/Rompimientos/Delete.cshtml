@@ -1,0 +1,53 @@
+﻿@model ProyectoWEB1.Models.tblArchivoProyecto_Materiales
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar Material</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.tblArchivoProyecto.NombreArchivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblArchivoProyecto.NombreArchivo)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblMateriales.NombreMaterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblMateriales.NombreMaterial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioParcial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioParcial)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Edit", "ArchivoProyectos", new { @id = @ViewBag.IdArchivoProyecto }, null)
+        </div>
+    }
+</div>

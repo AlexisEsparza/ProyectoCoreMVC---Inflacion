@@ -1,0 +1,76 @@
+﻿@model ProyectoWEB1.Models.tblArchivoProyecto
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles de Proyecto</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreArchivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoConstruccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoConstruccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioTotal)
+        </dd>
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Material")
+            </th>
+            <th>
+                @Html.Label("Cantidad")
+            </th>
+            <th>
+                @Html.Label("Subtotal")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in @Model.tblArchivoProyecto_Materiales)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblMateriales.NombreMaterial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioParcial)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdArchivoProyecto }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

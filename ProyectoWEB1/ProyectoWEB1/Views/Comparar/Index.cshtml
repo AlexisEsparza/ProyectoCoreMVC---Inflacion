@@ -1,0 +1,24 @@
+﻿@model ProyectoWEB1.Models.tblArchivoProyecto
+
+@{
+    ViewBag.Title = "Selección de Proyectos";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+<h1 align="center">Comparar Proyectos</h1>
+
+@using (Html.BeginForm("Index", "Comparar", FormMethod.Post))
+{
+    @*<div class="dropdown1">
+        @Html.DropDownList("NombresProyectos", items, "Seleccionar Proyecto 1")
+
+        @Html.DropDownList("NombresProyectos2", items, "Seleccionar Proyecto 2")
+    </div>*@
+    <div class="dropdown1">
+        @Html.DropDownList("Material1", items, "Seleccionar Material 1")
+
+        @Html.DropDownList("Material2", items, "Seleccionar Material 2")
+    </div>
+
+    <input type="submit" value="Comparar" name="comparar" class="boton" />
+}

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ProyectoWEB1.Models.ViewModels.MaterialesViewModel>
+
+@{
+    ViewBag.Title = "Proyectos con Materiales";
+    int numero = Model.Count();
+    int i = 0;
+}
+
+<h1 align="center">Lista de Proyectos con Materiales</h1>
+
+<table class="table table-striped table-bordered table-responsive" >
+        <tr>
+            <th>
+                @Html.DisplayName("Tipo de Construccion")
+            </th>
+            <th>
+                @Html.DisplayName("Material")
+            </th>
+            <th>
+                @Html.DisplayName("Cantidad")
+            </th>
+            @*@foreach (var item in Model)
+            {
+                if ((item) != null)
+                {
+                    <th>
+                        @Html.DisplayName("Material")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Cantidad")
+                    </th>
+                }
+                else
+                {
+                    break;
+                }
+            }*@
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayName((string)ViewBag.TipoConstruccion1)
+            </td>
+
+            @foreach (var item in Model)
+            {
+
+                if ((item) != null)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreMaterial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <tr></tr>
+                    <td></td>
+                }
+                else
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayName("Tipo de Construccion")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Material")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Cantidad")
+                        </th>
+                    </tr>
+                    <td>
+                        @Html.DisplayName((string)ViewBag.TipoConstruccion2)
+                    </td>
+                }
+            }
+        </tr>
+    </table>

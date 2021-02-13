@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbProyectoWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblArchivoProyecto">
+    <Key>
+      <PropertyRef Name="IdArchivoProyecto" />
+    </Key>
+    <Property Name="IdArchivoProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreArchivo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TipoConstruccion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="PrecioTotal" Type="money" />
+  </EntityType>
+  <EntityType Name="tblArchivoProyecto_Materiales">
+    <Key>
+      <PropertyRef Name="IdArchivoProyecto_Materiales" />
+    </Key>
+    <Property Name="IdArchivoProyecto_Materiales" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cantidad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PrecioParcial" Type="money" />
+    <Property Name="IdArchivoProyectoFK" Type="int" Nullable="false" />
+    <Property Name="IdMaterialFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMateriales">
+    <Key>
+      <PropertyRef Name="IdMaterial" />
+    </Key>
+    <Property Name="IdMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreMaterial" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PrecioMaterial" Type="money" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_IdArchivoProyecto">
+    <End Role="tblArchivoProyecto" Type="Self.tblArchivoProyecto" Multiplicity="1" />
+    <End Role="tblArchivoProyecto_Materiales" Type="Self.tblArchivoProyecto_Materiales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblArchivoProyecto">
+        <PropertyRef Name="IdArchivoProyecto" />
+      </Principal>
+      <Dependent Role="tblArchivoProyecto_Materiales">
+        <PropertyRef Name="IdArchivoProyectoFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_IdMaterial">
+    <End Role="tblMateriales" Type="Self.tblMateriales" Multiplicity="1" />
+    <End Role="tblArchivoProyecto_Materiales" Type="Self.tblArchivoProyecto_Materiales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMateriales">
+        <PropertyRef Name="IdMaterial" />
+      </Principal>
+      <Dependent Role="tblArchivoProyecto_Materiales">
+        <PropertyRef Name="IdMaterialFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbProyectoWebModelStoreContainer">
+    <EntitySet Name="tblArchivoProyecto" EntityType="Self.tblArchivoProyecto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblArchivoProyecto_Materiales" EntityType="Self.tblArchivoProyecto_Materiales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMateriales" EntityType="Self.tblMateriales" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_IdArchivoProyecto" Association="Self.fk_IdArchivoProyecto">
+      <End Role="tblArchivoProyecto" EntitySet="tblArchivoProyecto" />
+      <End Role="tblArchivoProyecto_Materiales" EntitySet="tblArchivoProyecto_Materiales" />
+    </AssociationSet>
+    <AssociationSet Name="fk_IdMaterial" Association="Self.fk_IdMaterial">
+      <End Role="tblMateriales" EntitySet="tblMateriales" />
+      <End Role="tblArchivoProyecto_Materiales" EntitySet="tblArchivoProyecto_Materiales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

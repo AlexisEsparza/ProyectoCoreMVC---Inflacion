@@ -1,0 +1,38 @@
+﻿@model ProyectoWEB1.Models.tblMateriales
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar Material</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreMaterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreMaterial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioMaterial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioMaterial)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
